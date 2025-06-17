@@ -1,0 +1,305 @@
+{
+  "info": {
+    "_postman_id": "c0f8b1a0-1e2a-4b9a-8d3a-0e9f7a1b3c4d",
+    "name": "Pizza Restaurant API Challenge",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Restaurants",
+      "item": [
+        {
+          "name": "Get All Restaurants",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/restaurants",
+              "host": ["{{base_url}}"],
+              "path": ["restaurants"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/restaurants",
+                  "host": ["{{base_url}}"],
+                  "path": ["restaurants"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "body": "[{\"id\":1,\"name\":\"Mario's Pizzeria\",\"address\":\"123 Mushroom Kingdom\"},{\"id\":2,\"name\":\"Luigi's Pizza\",\"address\":\"456 Ghost Valley\"}]"
+            }
+          ]
+        },
+        {
+          "name": "Get Single Restaurant",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/restaurants/1",
+              "host": ["{{base_url}}"],
+              "path": ["restaurants", "1"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/restaurants/1",
+                  "host": ["{{base_url}}"],
+                  "path": ["restaurants", "1"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "body": "{\"id\":1,\"name\":\"Mario's Pizzeria\",\"address\":\"123 Mushroom Kingdom\",\"pizzas\":[{\"id\":1,\"name\":\"Super Mushroom\",\"ingredients\":\"Mushrooms, Cheese, Tomato\",\"price\":10},{\"id\":2,\"name\":\"Fire Flower\",\"ingredients\":\"Pepperoni, Jalapeños, Tomato\",\"price\":12}]}"
+            },
+            {
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/restaurants/999",
+                  "host": ["{{base_url}}"],
+                  "path": ["restaurants", "999"]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "body": "{\"error\":\"Restaurant not found\"}"
+            }
+          ]
+        },
+        {
+          "name": "Delete Restaurant",
+          "request": {
+            "method": "DELETE",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/restaurants/2",
+              "host": ["{{base_url}}"],
+              "path": ["restaurants", "2"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/restaurants/2",
+                  "host": ["{{base_url}}"],
+                  "path": ["restaurants", "2"]
+                }
+              },
+              "status": "No Content",
+              "code": 204,
+              "_postman_previewlanguage": "json",
+              "body": ""
+            },
+            {
+              "name": "Not Found",
+              "originalRequest": {
+                "method": "DELETE",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/restaurants/999",
+                  "host": ["{{base_url}}"],
+                  "path": ["restaurants", "999"]
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "_postman_previewlanguage": "json",
+              "body": "{\"error\":\"Restaurant not found\"}"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Pizzas",
+      "item": [
+        {
+          "name": "Get All Pizzas",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{base_url}}/pizzas",
+              "host": ["{{base_url}}"],
+              "path": ["pizzas"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{base_url}}/pizzas",
+                  "host": ["{{base_url}}"],
+                  "path": ["pizzas"]
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "_postman_previewlanguage": "json",
+              "body": "[{\"id\":1,\"name\":\"Super Mushroom\",\"ingredients\":\"Mushrooms, Cheese, Tomato\"},{\"id\":2,\"name\":\"Fire Flower\",\"ingredients\":\"Pepperoni, Jalapeños, Tomato\"},{\"id\":3,\"name\":\"Starman\",\"ingredients\":\"Four Cheeses, Star-shaped pepperoni\"}]"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Restaurant Pizzas",
+      "item": [
+        {
+          "name": "Create RestaurantPizza",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"price\": 9,\n    \"pizza_id\": 1,\n    \"restaurant_id\": 3\n}"
+            },
+            "url": {
+              "raw": "{{base_url}}/restaurant_pizzas",
+              "host": ["{{base_url}}"],
+              "path": ["restaurant_pizzas"]
+            }
+          },
+          "response": [
+            {
+              "name": "Success",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"price\": 9,\n    \"pizza_id\": 1,\n    \"restaurant_id\": 3\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/restaurant_pizzas",
+                  "host": ["{{base_url}}"],
+                  "path": ["restaurant_pizzas"]
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "_postman_previewlanguage": "json",
+              "body": "{\"id\":6,\"price\":9,\"pizza_id\":1,\"restaurant_id\":3,\"pizza\":{\"id\":1,\"name\":\"Super Mushroom\",\"ingredients\":\"Mushrooms, Cheese, Tomato\"},\"restaurant\":{\"id\":3,\"name\":\"Peach's Castle Pizza\",\"address\":\"789 Toad Town\"}}"
+            },
+            {
+              "name": "Validation Error",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"price\": 35,\n    \"pizza_id\": 1,\n    \"restaurant_id\": 3\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/restaurant_pizzas",
+                  "host": ["{{base_url}}"],
+                  "path": ["restaurant_pizzas"]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "body": "{\"errors\":[\"Price must be between 1 and 30\"]}"
+            },
+            {
+              "name": "Missing Fields",
+              "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n    \"price\": 10\n}"
+                },
+                "url": {
+                  "raw": "{{base_url}}/restaurant_pizzas",
+                  "host": ["{{base_url}}"],
+                  "path": ["restaurant_pizzas"]
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "_postman_previewlanguage": "json",
+              "body": "{\"errors\":[\"Missing required fields: pizza_id, restaurant_id\"]}"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://localhost:5555"
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "exec": ["console.log(`Requesting: ${pm.request.url}`);"]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "exec": [
+          "pm.test(\"Status code is 200\", function () {",
+          "    pm.response.to.have.status(200);",
+          "});",
+          "",
+          "pm.test(\"Response time is acceptable\", function () {",
+          "    pm.expect(pm.response.responseTime).to.be.below(500);",
+          "});"
+        ]
+      }
+    }
+  ],
+  "protocolProfileBehavior": {}
+}
